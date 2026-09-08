@@ -230,10 +230,11 @@
     padding:30px; display:flex; align-items:center; justify-content:center; min-height:380px;
   }
   .gallery-main img{max-height:400px; width:auto; margin:0 auto;}
-  .swatch-row{display:flex; gap:12px; margin-top:16px;}
+  .swatch-row{display:flex; gap:12px; margin-top:16px; flex-wrap:wrap;}
   .swatch{
     flex:1; border:1px solid var(--line); background:var(--paper-3); cursor:pointer;
     padding:10px; text-align:center; transition:border-color .15s ease, background .15s ease;
+    min-width:80px;
   }
   .swatch img{height:56px; width:auto; margin:0 auto 8px;}
   .swatch span{font-size:12px; font-weight:600; color:var(--ink-soft);}
@@ -492,7 +493,7 @@
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">The Table</p>
-        <h2>Four finishes. One commanding presence.</h2>
+        <h2>Five finishes. One commanding presence.</h2>
         <p>Every MODULAR executive table ships fully built, with a spacious L-shaped work surface, an integrated side cabinet, and a finish chosen to match your office.</p>
       </div>
 
@@ -513,6 +514,9 @@
             </div>
             <div class="swatch" data-img="assets/DT-004.png" data-name="Umber Shadow">
               <img src="assets/DT-004.png" alt="Umber Shadow finish" loading="lazy"><span>Umber Shadow</span>
+            </div>
+            <div class="swatch" data-img="assets/DT-005.png" data-name="Graphite">
+              <img src="assets/DT-005.png" alt="Graphite finish" loading="lazy"><span>Graphite</span>
             </div>
           </div>
           <p class="gallery-note">Finish names shown here are descriptive placeholders — confirm exact finish availability and official names with our sales team before ordering.</p>
@@ -587,6 +591,7 @@
           <tbody id="priceTableBody">
             <tr data-min="1" data-max="1"><td>1 unit</td><td class="tier-price">₦750,000</td></tr>
             <tr data-min="2" data-max="9"><td>2 – 9 units</td><td class="tier-price">₦720,000</td></tr>
+            <tr data-min="10" data-max="10"><td>10 units</td><td class="tier-price">₦720,000</td></tr>
             <tr data-min="11" data-max="99999"><td>11+ units</td><td class="tier-price">₦700,000</td></tr>
           </tbody>
         </table>
@@ -764,6 +769,7 @@
                   <option>Espresso Walnut</option>
                   <option>Arctic White</option>
                   <option>Umber Shadow</option>
+                  <option>Graphite</option>
                 </select>
               </div>
               <div class="form-row">
@@ -872,7 +878,7 @@ finishSelect.addEventListener('change', () => {
 const TIERS = [
   {min:1, max:1, price:750000},
   {min:2, max:9, price:720000},
-  {min:10, max:10, price:720000}, // unspecified by client; treated as upper 2-9 rate until confirmed
+  {min:10, max:10, price:720000},
   {min:11, max:Infinity, price:700000}
 ];
 function unitPriceFor(qty){
