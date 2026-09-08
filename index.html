@@ -119,8 +119,36 @@
   nav a:hover{color:var(--rust-deep);}
   .nav-cta{display:flex; align-items:center; gap:14px;}
   .nav-links{display:flex; gap:26px;}
-  .menu-btn{display:none; background:none; border:none; cursor:pointer; padding:6px;}
-  .menu-btn span, .menu-btn::before, .menu-btn::after{content:''; display:block; width:22px; height:2px; background:var(--ink); margin:5px 0;}
+  .menu-btn{
+    display:none; background:none; border:none; cursor:pointer;
+    width:36px; height:36px; position:relative; flex-shrink:0;
+  }
+  .menu-icon, .menu-icon::before, .menu-icon::after{
+    content:''; position:absolute; left:7px; width:22px; height:2px; background:var(--ink);
+    transition:transform .2s ease, opacity .2s ease, top .2s ease;
+  }
+  .menu-icon{top:17px;}
+  .menu-icon::before{top:-7px;}
+  .menu-icon::after{top:7px;}
+  .menu-btn[aria-expanded="true"] .menu-icon{background:transparent;}
+  .menu-btn[aria-expanded="true"] .menu-icon::before{top:0; transform:rotate(45deg);}
+  .menu-btn[aria-expanded="true"] .menu-icon::after{top:0; transform:rotate(-45deg);}
+
+  /* ---------- Mobile nav panel ---------- */
+  .mobile-nav{
+    display:none; flex-direction:column;
+    max-height:0; overflow:hidden;
+    background:var(--paper-3); border-bottom:1px solid var(--line);
+    transition:max-height .3s ease;
+  }
+  .mobile-nav a{
+    padding:16px 28px; font-size:15px; font-weight:500; text-decoration:none;
+    color:var(--ink-soft); border-bottom:1px solid var(--line-soft);
+  }
+  .mobile-nav a.btn{
+    margin:16px 28px 20px; text-align:center; border-bottom:none;
+  }
+  .mobile-nav.open{max-height:420px;}
 
   /* ---------- Hero ---------- */
   .hero{
@@ -364,16 +392,32 @@
     .order-grid{grid-template-columns:1fr;}
     .footer-grid{grid-template-columns:1fr 1fr; row-gap:28px;}
     .nav-links{display:none;}
+    .nav-cta{display:none;}
     .menu-btn{display:block;}
+    .mobile-nav{display:flex;}
     .price-tag{right:2%;}
     .sticky-cta{display:flex;}
     body{padding-bottom:68px;}
+    section{padding:56px 0;}
+    .benefits-cols{border-top:none;}
+    .header-inner{padding:12px 20px;}
+    .wrap{padding:0 20px;}
+  }
+  @media (max-width: 640px){
+    .swatch-row{flex-wrap:wrap;}
+    .swatch{flex:1 1 calc(50% - 6px);}
   }
   @media (max-width: 520px){
     .footer-grid{grid-template-columns:1fr;}
     .form-two{grid-template-columns:1fr;}
-    .hero-stats{gap:20px;}
-    .price-tag{width:128px; padding:11px 13px 13px;}
+    .hero-stats{gap:16px 22px;}
+    .price-tag{width:120px; padding:10px 12px 12px; right:0;}
+    .gallery-main{padding:18px; min-height:260px;}
+    .gallery-main img{max-height:230px;}
+    .announce{font-size:11.5px; line-height:1.5;}
+    .trust-bar{justify-content:flex-start; gap:28px;}
+    .order-form-panel{padding:24px 20px;}
+    .hero{padding:40px 0 28px;}
   }
 </style>
 </head>
@@ -384,7 +428,7 @@
 <header>
   <div class="header-inner">
     <a href="#top" class="brand">
-      <img src="image/Handy gidi logo.png" alt="MODULAR by Handy-Gidi">
+      <img src="assets/logo-lockup.png" alt="MODULAR by Handy-Gidi">
     </a>
     <nav>
       <div class="nav-links">
@@ -396,8 +440,17 @@
       <div class="nav-cta">
         <a class="btn btn-wa" href="https://wa.me/2347051094001?text=Hi%20MODULAR%2C%20I%27d%20like%20to%20order%20the%20Executive%20Office%20Table." target="_blank" rel="noopener">Chat on WhatsApp</a>
       </div>
-      <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')"></button>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+        <span class="menu-icon"></span>
+      </button>
     </nav>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#product">Product</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#delivery">Delivery</a>
+    <a href="#faq">FAQ</a>
+    <a class="btn btn-wa" href="https://wa.me/2347051094001?text=Hi%20MODULAR%2C%20I%27d%20like%20to%20order%20the%20Executive%20Office%20Table." target="_blank" rel="noopener">Chat on WhatsApp</a>
   </div>
 </header>
 
@@ -423,7 +476,7 @@
       <div class="hero-visual">
         <div class="hero-glow"></div>
         <div class="hero-img-frame">
-          <img src="image/Handy gidi logo.png" alt="MODULAR Executive Office Table, walnut and graphite finish">
+          <img src="assets/DT-001.png" alt="MODULAR Executive Office Table, walnut and graphite finish">
           <div class="price-tag">
             <div class="ptag-label">Executive Table</div>
             <div class="ptag-price">₦750,000</div>
@@ -446,20 +499,20 @@
       <div class="gallery">
         <div>
           <div class="gallery-main">
-            <img id="mainProductImg" src="assests/DT-001.png" alt="MODULAR Executive Office Table">
+            <img id="mainProductImg" src="assets/DT-001.png" alt="MODULAR Executive Office Table">
           </div>
           <div class="swatch-row">
             <div class="swatch active" data-img="assets/DT-001.png" data-name="Mahogany Classic">
-              <img src="assests/DT-001.png" alt="Mahogany Classic finish"><span>Mahogany Classic</span>
+              <img src="assets/DT-001.png" alt="Mahogany Classic finish" loading="lazy"><span>Mahogany Classic</span>
             </div>
             <div class="swatch" data-img="assets/DT-002.png" data-name="Espresso Walnut">
-              <img src="assests/DT-002.png" alt="Espresso Walnut finish"><span>Espresso Walnut</span>
+              <img src="assets/DT-002.png" alt="Espresso Walnut finish" loading="lazy"><span>Espresso Walnut</span>
             </div>
             <div class="swatch" data-img="assets/DT-003.png" data-name="Arctic White">
-              <img src="assests/DT-003.png" alt="Arctic White finish"><span>Arctic White</span>
+              <img src="assets/DT-003.png" alt="Arctic White finish" loading="lazy"><span>Arctic White</span>
             </div>
             <div class="swatch" data-img="assets/DT-004.png" data-name="Umber Shadow">
-              <img src="assests/DT-004.png" alt="Umber Shadow finish"><span>Umber Shadow</span>
+              <img src="assets/DT-004.png" alt="Umber Shadow finish" loading="lazy"><span>Umber Shadow</span>
             </div>
           </div>
           <p class="gallery-note">Finish names shown here are descriptive placeholders — confirm exact finish availability and official names with our sales team before ordering.</p>
@@ -782,6 +835,20 @@
 
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ---- Mobile menu ---- */
+const menuBtn = document.getElementById('menuBtn');
+const mobileNav = document.getElementById('mobileNav');
+menuBtn.addEventListener('click', () => {
+  const isOpen = mobileNav.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+});
+mobileNav.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileNav.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  });
+});
 
 /* ---- Finish swatches ---- */
 const swatches = document.querySelectorAll('.swatch');
