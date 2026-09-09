@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>MODULAR Executive Office Table — Handy-Gidi | Pay on Delivery, Abuja</title>
-<meta name="description" content="MODULAR Executive Office Table by Handy-Gidi. Premium executive design, free same-day delivery and installation within Abuja Metropolis. Payment on delivery.">
+<meta name="description" content="MODULAR Executive Office Table by Handy-Gidi. Premium executive design, free same-day delivery and installation within Abuja Metropolis. Payment on delivery." />
 
-<!-- ============================================================
-     TRACKING: client confirmed they will run paid ads but did not
-     supply Pixel/Analytics IDs yet. Drop Meta Pixel / GA4 / TikTok
-     Pixel snippets here once received.
-     ============================================================ -->
+<!-- TRACKING placeholder – add Pixel/GA when available -->
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,460;0,9..144,560;0,9..144,650;1,9..144,460&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,460;0,9..144,560;0,9..144,650;1,9..144,460&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
 <style>
   :root{
@@ -270,15 +266,25 @@
   .pricing-panel{
     display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;
   }
-  table.price-table{width:100%; border-collapse:collapse;}
-  table.price-table th{
-    text-align:left; font-size:12.5px; text-transform:uppercase; letter-spacing:0.08em;
-    color:var(--ink-soft); font-weight:600; padding-bottom:12px; border-bottom:1px solid var(--line);
+  .price-display{
+    border:1px solid var(--line);
+    background:var(--paper-3);
+    padding:26px;
   }
-  table.price-table td{padding:16px 0; border-bottom:1px solid var(--line-soft); font-size:15.5px;}
-  table.price-table tr.tier-active td{color:var(--rust-deep); font-weight:700;}
-  table.price-table td.tier-price{text-align:right; font-family:'Fraunces', serif; font-size:19px; font-weight:560;}
-
+  .price-display .unit-price{
+    font-size:13px;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+  }
+  .price-display .unit-price b{
+    font-family:'Fraunces', serif;
+    font-size:28px;
+    font-weight:650;
+    color:var(--ink);
+    display:block;
+    margin-top:4px;
+  }
   .calc{border:1px solid var(--line); background:var(--paper-3); padding:26px;}
   .calc h3{font-size:18px; margin-bottom:18px;}
   .qty-row{display:flex; align-items:center; gap:14px; margin-bottom:20px;}
@@ -469,7 +475,7 @@
           <a href="#product" class="btn btn-ghost">See finishes &amp; specs</a>
         </div>
         <div class="hero-stats">
-          <div class="stat"><b>₦750,000</b><span>Starting price, single unit</span></div>
+          <div class="stat"><b id="heroPrice">₦750,000</b><span>Starting price, single unit</span></div>
           <div class="stat"><b>100+</b><span>Satisfied clients</span></div>
           <div class="stat"><b>Same day</b><span>Delivery within Abuja</span></div>
         </div>
@@ -477,10 +483,10 @@
       <div class="hero-visual">
         <div class="hero-glow"></div>
         <div class="hero-img-frame">
-          <img src="assests/DT-005.png" alt="MODULAR Executive Office Table, walnut and graphite finish">
+          <img id="heroProductImg" src="assests/DT-001.png" alt="MODULAR Executive Office Table">
           <div class="price-tag">
             <div class="ptag-label">Executive Table</div>
-            <div class="ptag-price">₦750,000</div>
+            <div class="ptag-price" id="heroTagPrice">₦750,000</div>
             <div class="ptag-note">Pay on delivery, Abuja</div>
           </div>
         </div>
@@ -493,7 +499,7 @@
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">The Table</p>
-        <h2>Five finishes. One commanding presence.</h2>
+        <h2>Four finishes. One commanding presence.</h2>
         <p>Every MODULAR executive table ships fully built, with a spacious L-shaped work surface, an integrated side cabinet, and a finish chosen to match your office.</p>
       </div>
 
@@ -503,32 +509,30 @@
             <img id="mainProductImg" src="assests/DT-001.png" alt="MODULAR Executive Office Table">
           </div>
           <div class="swatch-row">
-            <div class="swatch active" data-img="assests/DT-001.png" data-name="Mahogany Classic">
-              <img src="assests/DT-001.png" alt="Mahogany Classic finish" loading="lazy"><span>Mahogany Classic</span>
+            <div class="swatch active" data-img="assests/DT-001.png" data-name="Wood-grain &amp; Dark Grey" data-price="750000">
+              <img src="assests/DT-001.png" alt="Wood-grain & Dark Grey" loading="lazy"><span>Wood-grain &amp; Dark Grey</span>
             </div>
-            <div class="swatch" data-img="assests/DT-002.png" data-name="Espresso Walnut">
-              <img src="assests/DT-002.png" alt="Espresso Walnut finish" loading="lazy"><span>Espresso Walnut</span>
+            <div class="swatch" data-img="assests/DT-002.png" data-name="Wenge Brown &amp; Dark Grey" data-price="550000">
+              <img src="assests/DT-002.png" alt="Wenge Brown & Dark Grey" loading="lazy"><span>Wenge Brown &amp; Dark Grey</span>
             </div>
-            <div class="swatch" data-img="assests/DT-003.png" data-name="Arctic White">
-              <img src="assests/DT-003.png" alt="Arctic White finish" loading="lazy"><span>Arctic White</span>
+            <div class="swatch" data-img="assests/DT-003.png" data-name="Offwhite &amp; Dark Grey" data-price="750000">
+              <img src="assests/DT-003.png" alt="Offwhite & Dark Grey" loading="lazy"><span>Offwhite &amp; Dark Grey</span>
             </div>
-            <div class="swatch" data-img="assests/DT-004.png" data-name="Umber Shadow">
-              <img src="assests/DT-004.png" alt="Umber Shadow finish" loading="lazy"><span>Umber Shadow</span>
-            </div>
-            <div class="swatch" data-img="assests/DT-005.png" data-name="Graphite">
-              <img src="assests/DT-005.png" alt="Graphite finish" loading="lazy"><span>Graphite</span>
+            <div class="swatch" data-img="assests/DT-004.png" data-name="Wenge &amp; Dark Grey" data-price="750000">
+              <img src="assests/DT-004.png" alt="Wenge & Dark Grey" loading="lazy"><span>Wenge &amp; Dark Grey</span>
             </div>
           </div>
-          <p class="gallery-note">Finish names shown here are descriptive placeholders — confirm exact finish availability and official names with our sales team before ordering.</p>
+          <p class="gallery-note">Finish names correspond to client product codes: DT‑001, DT‑002, DT‑003, DT‑004.</p>
         </div>
 
         <div>
           <h3 style="font-size:19px; margin-bottom:6px;">Specification</h3>
           <dl class="spec-sheet">
             <div class="spec-row"><dt>Overall dimensions</dt><dd>1800 × 750 × 800 mm</dd></div>
-            <div class="spec-row"><dt>Side cabinet</dt><dd>500 × 1300 mm</dd></div>
+            <div class="spec-row"><dt>Extension</dt><dd>1300 × 750 × 500 mm</dd></div>
             <div class="spec-row"><dt>Build</dt><dd>Modular — quick coupling &amp; install</dd></div>
-            <div class="spec-row"><dt>Integrated power</dt><dd>Smart socket / USB duct, HDMI, adapter</dd></div>
+            <div class="spec-row"><dt>Features</dt><dd>Drawers, Smart sockets, USB ducts</dd></div>
+            <div class="spec-row"><dt>Side cabinet</dt><dd>With duct cover</dd></div>
             <div class="spec-row"><dt>Installation time</dt><dd>Minutes, by our team</dd></div>
             <div class="spec-row"><dt>Recommended for</dt><dd>CEOs, directors, boardrooms</dd></div>
           </dl>
@@ -549,9 +553,9 @@
           <h3>Design &amp; presence</h3>
           <ul>
             <li>Premium executive design</li>
-            <li>Elegant wood-grain finish</li>
+            <li>Elegant wood-grain or contemporary finishes</li>
             <li>Powerful, professional office presence</li>
-            <li>Spacious work surface</li>
+            <li>Spacious work surface &amp; extension</li>
           </ul>
         </div>
         <div class="benefit-col">
@@ -579,22 +583,23 @@
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">Pricing</p>
-        <h2>One table, or fit out the whole floor.</h2>
-        <p>Pricing steps down automatically as your order grows — ideal for outfitting boardrooms and multi-desk offices.</p>
+        <h2>Choose your finish, see your price.</h2>
+        <p>Prices vary by finish. Calculate your total instantly – no hidden costs.</p>
       </div>
 
       <div class="pricing-panel">
-        <table class="price-table">
-          <thead>
-            <tr><th>Quantity</th><th style="text-align:right;">Price per unit</th></tr>
-          </thead>
-          <tbody id="priceTableBody">
-            <tr data-min="1" data-max="1"><td>1 unit</td><td class="tier-price">₦750,000</td></tr>
-            <tr data-min="2" data-max="9"><td>2 – 9 units</td><td class="tier-price">₦720,000</td></tr>
-            <tr data-min="10" data-max="10"><td>10 units</td><td class="tier-price">₦720,000</td></tr>
-            <tr data-min="11" data-max="99999"><td>11+ units</td><td class="tier-price">₦700,000</td></tr>
-          </tbody>
-        </table>
+        <div class="price-display">
+          <div class="unit-price">
+            Unit price
+            <b id="unitPriceDisplay">₦750,000</b>
+          </div>
+          <div style="margin-top:18px; border-top:1px solid var(--line-soft); padding-top:16px;">
+            <div style="display:flex; justify-content:space-between; font-size:14px; color:var(--ink-soft);">
+              <span>Selected finish</span>
+              <span id="selectedFinishName">Wood-grain &amp; Dark Grey</span>
+            </div>
+          </div>
+        </div>
 
         <div class="calc">
           <h3>Estimate your order</h3>
@@ -676,7 +681,7 @@
         <h2>Frequently asked questions</h2>
       </div>
       <div id="faqList">
-        <!-- JS-safe static markup -->
+        <!-- Static FAQ items (unchanged) -->
         <div class="faq-item">
           <button class="faq-q"><span>Is the table made from scratch after I order?</span><span class="plus">+</span></button>
           <div class="faq-a"><p>No. The table is already fully manufactured and only requires coupling and installation.</p></div>
@@ -695,7 +700,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-q"><span>How much is the Executive Office Table?</span><span class="plus">+</span></button>
-          <div class="faq-a"><p>The current price is ₦750,000, with lower per-unit pricing for bulk orders.</p></div>
+          <div class="faq-a"><p>Prices start from ₦550,000 and vary by finish – see the pricing section for details.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q"><span>Who is this table suitable for?</span><span class="plus">+</span></button>
@@ -703,7 +708,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-q"><span>Can I choose a different colour or finish?</span><span class="plus">+</span></button>
-          <div class="faq-a"><p>Please contact us to confirm the available colours and finishes for the tables.</p></div>
+          <div class="faq-a"><p>We offer four finish options – please see the product gallery above.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q"><span>Is the table easy to move?</span><span class="plus">+</span></button>
@@ -733,7 +738,7 @@
       <div class="order-grid">
         <div>
           <div class="order-summary">
-            <div class="osum-row"><span>Product</span><span id="sumProduct">Mahogany Classic</span></div>
+            <div class="osum-row"><span>Product</span><span id="sumProduct">Wood-grain &amp; Dark Grey</span></div>
             <div class="osum-row"><span>Quantity</span><span id="sumQty">1</span></div>
             <div class="osum-row"><span>Estimated total</span><span id="sumTotal">₦750,000</span></div>
             <div class="osum-row"><span>Payment</span><span>On delivery (Abuja Metropolis)</span></div>
@@ -765,11 +770,10 @@
               <div class="form-row">
                 <label for="finish">Finish</label>
                 <select id="finish" name="finish">
-                  <option>Mahogany Classic</option>
-                  <option>Espresso Walnut</option>
-                  <option>Arctic White</option>
-                  <option>Umber Shadow</option>
-                  <option>Graphite</option>
+                  <option value="Wood-grain &amp; Dark Grey" data-price="750000">Wood-grain &amp; Dark Grey</option>
+                  <option value="Wenge Brown &amp; Dark Grey" data-price="550000">Wenge Brown &amp; Dark Grey</option>
+                  <option value="Offwhite &amp; Dark Grey" data-price="750000">Offwhite &amp; Dark Grey</option>
+                  <option value="Wenge &amp; Dark Grey" data-price="750000">Wenge &amp; Dark Grey</option>
                 </select>
               </div>
               <div class="form-row">
@@ -835,7 +839,7 @@
 </footer>
 
 <div class="sticky-cta">
-  <div class="sc-price">₦750,000<small>Executive Office Table</small></div>
+  <div class="sc-price" id="stickyPrice">₦750,000<small>Executive Office Table</small></div>
   <a href="#order" class="btn btn-wa">Order now</a>
 </div>
 
@@ -856,43 +860,68 @@ mobileNav.querySelectorAll('a').forEach(link => {
   });
 });
 
+/* ---- Product data ---- */
+const PRODUCTS = {
+  'Wood-grain &amp; Dark Grey': { price: 750000, img: 'assests/DT-001.png' },
+  'Wenge Brown &amp; Dark Grey': { price: 550000, img: 'assests/DT-002.png' },
+  'Offwhite &amp; Dark Grey': { price: 750000, img: 'assests/DT-003.png' },
+  'Wenge &amp; Dark Grey': { price: 750000, img: 'assests/DT-004.png' }
+};
+
 /* ---- Finish swatches ---- */
 const swatches = document.querySelectorAll('.swatch');
 const mainImg = document.getElementById('mainProductImg');
+const heroImg = document.getElementById('heroProductImg');
 const finishSelect = document.getElementById('finish');
+
+function formatNaira(n){
+  return '₦' + n.toLocaleString('en-NG');
+}
+
+function updateForFinish(name){
+  const data = PRODUCTS[name];
+  if(!data) return;
+  const price = data.price;
+  const img = data.img;
+  // Update main gallery image
+  mainImg.src = img;
+  heroImg.src = img;
+  // Update price displays
+  document.getElementById('unitPriceDisplay').textContent = formatNaira(price);
+  document.getElementById('heroPrice').textContent = formatNaira(price);
+  document.getElementById('heroTagPrice').textContent = formatNaira(price);
+  document.getElementById('selectedFinishName').textContent = name;
+  document.getElementById('sumProduct').textContent = name;
+  // Update sticky price
+  document.querySelector('.sc-price').innerHTML = formatNaira(price) + '<small>Executive Office Table</small>';
+  // Update dropdown
+  finishSelect.value = name;
+  // Recalculate total
+  updateCalc();
+}
+
 swatches.forEach(sw => {
   sw.addEventListener('click', () => {
     swatches.forEach(s => s.classList.remove('active'));
     sw.classList.add('active');
-    mainImg.src = sw.dataset.img;
-    mainImg.alt = 'MODULAR Executive Office Table — ' + sw.dataset.name;
-    finishSelect.value = sw.dataset.name;
-    document.getElementById('sumProduct').textContent = sw.dataset.name;
+    const name = sw.dataset.name;
+    updateForFinish(name);
   });
-});
-finishSelect.addEventListener('change', () => {
-  document.getElementById('sumProduct').textContent = finishSelect.value;
 });
 
-/* ---- Pricing tiers ---- */
-const TIERS = [
-  {min:1, max:1, price:750000},
-  {min:2, max:9, price:720000},
-  {min:10, max:10, price:720000},
-  {min:11, max:Infinity, price:700000}
-];
-function unitPriceFor(qty){
-  const tier = TIERS.find(t => qty >= t.min && qty <= t.max) || TIERS[TIERS.length-1];
-  return tier.price;
-}
-function formatNaira(n){
-  return '₦' + n.toLocaleString('en-NG');
-}
-function highlightTierRow(qty){
-  document.querySelectorAll('#priceTableBody tr').forEach(row=>{
-    const min = parseInt(row.dataset.min), max = parseInt(row.dataset.max);
-    row.classList.toggle('tier-active', qty >= min && qty <= max);
+finishSelect.addEventListener('change', () => {
+  const name = finishSelect.value;
+  // Find matching swatch and activate it
+  swatches.forEach(sw => {
+    sw.classList.toggle('active', sw.dataset.name === name);
   });
+  updateForFinish(name);
+});
+
+/* ---- Pricing & quantity ---- */
+function getUnitPrice(){
+  const name = finishSelect.value;
+  return PRODUCTS[name] ? PRODUCTS[name].price : 750000;
 }
 
 const calcQty = document.getElementById('calcQty');
@@ -902,18 +931,36 @@ const qtyField = document.getElementById('qty');
 function updateCalc(){
   let qty = Math.max(1, parseInt(calcQty.value) || 1);
   calcQty.value = qty;
-  const unit = unitPriceFor(qty);
-  calcTotal.textContent = formatNaira(unit * qty);
-  highlightTierRow(qty);
+  const unit = getUnitPrice();
+  const total = unit * qty;
+  calcTotal.textContent = formatNaira(total);
   qtyField.value = qty;
   document.getElementById('sumQty').textContent = qty;
-  document.getElementById('sumTotal').textContent = formatNaira(unit * qty);
+  document.getElementById('sumTotal').textContent = formatNaira(total);
 }
-document.getElementById('qtyMinus').addEventListener('click', ()=>{ calcQty.value = Math.max(1, (parseInt(calcQty.value)||1) - 1); updateCalc(); });
-document.getElementById('qtyPlus').addEventListener('click', ()=>{ calcQty.value = (parseInt(calcQty.value)||1) + 1; updateCalc(); });
+
+document.getElementById('qtyMinus').addEventListener('click', ()=>{
+  calcQty.value = Math.max(1, (parseInt(calcQty.value)||1) - 1);
+  updateCalc();
+});
+document.getElementById('qtyPlus').addEventListener('click', ()=>{
+  calcQty.value = (parseInt(calcQty.value)||1) + 1;
+  updateCalc();
+});
 calcQty.addEventListener('input', updateCalc);
-qtyField.addEventListener('input', ()=>{ calcQty.value = Math.max(1, parseInt(qtyField.value)||1); updateCalc(); });
-updateCalc();
+qtyField.addEventListener('input', ()=>{
+  calcQty.value = Math.max(1, parseInt(qtyField.value)||1);
+  updateCalc();
+});
+
+// Initialize with first swatch (active)
+const activeSwatch = document.querySelector('.swatch.active');
+if(activeSwatch) {
+  updateForFinish(activeSwatch.dataset.name);
+} else {
+  // fallback
+  updateForFinish('Wood-grain &amp; Dark Grey');
+}
 
 /* ---- FAQ accordion ---- */
 document.querySelectorAll('.faq-item').forEach(item=>{
@@ -944,7 +991,7 @@ document.getElementById('orderForm').addEventListener('submit', function(e){
     return;
   }
   const qty = Math.max(1, parseInt(f.qty.value)||1);
-  const unit = unitPriceFor(qty);
+  const unit = getUnitPrice();
   const total = unit * qty;
   const lines = [
     'New order — MODULAR Executive Office Table',
