@@ -362,6 +362,42 @@
     outline:2px solid var(--gold-deep); outline-offset:1px; border-color:var(--gold-deep);
   }
   .form-two{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+
+  /* New style for radio chip group */
+  .zone-radio-group{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:4px;
+  }
+  .zone-radio-group label{
+    display:flex;
+    align-items:center;
+    gap:4px;
+    padding:6px 12px;
+    border:1px solid var(--line);
+    background:var(--paper);
+    font-size:13px;
+    font-weight:500;
+    cursor:pointer;
+    border-radius:3px;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .zone-radio-group label:hover{
+    border-color:var(--ink);
+  }
+  .zone-radio-group input[type="radio"]{
+    margin:0;
+    accent-color:var(--gold-deep);
+  }
+  .zone-radio-group input[type="radio"]:checked + span{
+    color:var(--rust-deep);
+  }
+  .zone-radio-group label:has(input:checked){
+    border-color:var(--gold-deep);
+    background:var(--paper-3);
+  }
+
   .form-submit{width:100%; margin-top:6px;}
   .confirm-panel{display:none; text-align:center; padding:40px 10px;}
   .confirm-panel .mark{font-size:38px; color:var(--gold-deep); margin-bottom:14px;}
@@ -642,7 +678,7 @@
       <div class="delivery-grid">
         <div>
           <h3 style="font-size:18px; margin-bottom:4px;">Free, same-day delivery zones</h3>
-          <p style="color:var(--ink-soft); font-size:14.5px; margin-top:8px;">Payment on delivery applies within Abuja Metropolis, covering:</p>
+          <p style="color:var(--ink-soft); font-size:14.5px; margin-top:8px;">Payment on delivery applies within Abuja Metropolis. Please select your zone in the order form below.</p>
           <div class="zone-chips">
             <span class="chip">Asokoro</span><span class="chip">CBD</span><span class="chip">Maitama</span>
             <span class="chip">Garki</span><span class="chip">Wuse</span><span class="chip">Wuye</span>
@@ -694,7 +730,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-q"><span>Who is this table suitable for?</span><span class="plus">+</span></button>
-          <div class="faq-a"><p>It is ideal for CEOs, directors, executives, business owners, boardrooms and premium office spaces.</p></div>
+          <div class="faq-a"><p>It is ideal for CEOs, Executives, Managers, Business owners, hotels managers, VIPs and celebrities.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q"><span>Can I choose a different colour or finish?</span><span class="plus">+</span></button>
@@ -730,6 +766,7 @@
             <div class="osum-row"><span>Product</span><span id="sumProduct">Wood-grain &amp; Dark Grey</span></div>
             <div class="osum-row"><span>Quantity</span><span id="sumQty">1</span></div>
             <div class="osum-row"><span>Estimated total</span><span id="sumTotal">₦750,000</span></div>
+            <div class="osum-row"><span>Delivery zone</span><span id="sumZone">Asokoro</span></div>
             <div class="osum-row"><span>Payment</span><span>On delivery (Abuja Metropolis)</span></div>
           </div>
           <p style="font-size:13.5px; color:rgba(245,239,226,0.65); margin-top:22px; max-width:42ch;">Ordering from outside Abuja? No problem — we deliver nationwide. Our team will confirm delivery cost and timing with you on WhatsApp before dispatch.</p>
@@ -757,21 +794,33 @@
               <label for="address">Delivery address <span class="opt">(street, city/state)</span></label>
               <input type="text" id="address" name="address" required>
             </div>
-            <div class="form-two">
-              <div class="form-row">
-                <label for="finish">Finish</label>
-                <select id="finish" name="finish">
-                  <option value="DT-001">Wood-grain &amp; Dark Grey</option>
-                  <option value="DT-002">Wenge Brown &amp; Dark Grey</option>
-                  <option value="DT-003">Offwhite &amp; Dark Grey</option>
-                  <option value="DT-004">Wenge &amp; Dark Grey</option>
-                </select>
-              </div>
-              <div class="form-row">
-                <label for="qty">Quantity</label>
-                <input type="number" id="qty" name="qty" value="1" min="1">
+
+            <div class="form-row">
+              <label for="qty">Quantity</label>
+              <input type="number" id="qty" name="qty" value="1" min="1">
+            </div>
+
+            <div class="form-row">
+              <label>Select your delivery zone (Abuja Metropolis)</label>
+              <div class="zone-radio-group">
+                <label><input type="radio" name="deliveryZone" value="Asokoro" checked> <span>Asokoro</span></label>
+                <label><input type="radio" name="deliveryZone" value="CBD"> <span>CBD</span></label>
+                <label><input type="radio" name="deliveryZone" value="Maitama"> <span>Maitama</span></label>
+                <label><input type="radio" name="deliveryZone" value="Garki"> <span>Garki</span></label>
+                <label><input type="radio" name="deliveryZone" value="Wuse"> <span>Wuse</span></label>
+                <label><input type="radio" name="deliveryZone" value="Wuye"> <span>Wuye</span></label>
+                <label><input type="radio" name="deliveryZone" value="Utako"> <span>Utako</span></label>
+                <label><input type="radio" name="deliveryZone" value="Jabi"> <span>Jabi</span></label>
+                <label><input type="radio" name="deliveryZone" value="Apo"> <span>Apo</span></label>
+                <label><input type="radio" name="deliveryZone" value="Katampe"> <span>Katampe</span></label>
+                <label><input type="radio" name="deliveryZone" value="Guzape"> <span>Guzape</span></label>
+                <label><input type="radio" name="deliveryZone" value="Durumi"> <span>Durumi</span></label>
+                <label><input type="radio" name="deliveryZone" value="Mabushi"> <span>Mabushi</span></label>
+                <label><input type="radio" name="deliveryZone" value="Jahi"> <span>Jahi</span></label>
+                <label><input type="radio" name="deliveryZone" value="Kaura"> <span>Kaura</span></label>
               </div>
             </div>
+
             <div class="form-row">
               <label for="deliveryTime">Preferred delivery time <span class="opt">(optional)</span></label>
               <input type="text" id="deliveryTime" name="deliveryTime" placeholder="e.g. weekday afternoon">
@@ -914,10 +963,18 @@ const stickyPrice = document.getElementById('stickyPrice');
 const calcTotal = document.getElementById('calcTotal');
 const sumTotal = document.getElementById('sumTotal');
 const sumQty = document.getElementById('sumQty');
+const sumZone = document.getElementById('sumZone');
 const calcQty = document.getElementById('calcQty');
 const qtyField = document.getElementById('qty');
 const galleryPrice = document.getElementById('galleryPriceTag');
 const specSheet = document.getElementById('specSheet');
+
+// Update summary zone when radio changes
+document.querySelectorAll('input[name="deliveryZone"]').forEach(radio => {
+  radio.addEventListener('change', function() {
+    sumZone.textContent = this.value;
+  });
+});
 
 function renderSpecs(product){
   const rows = [
@@ -929,8 +986,8 @@ function renderSpecs(product){
   if (product.features && product.features.length) rows.push({ label: 'Features', value: product.features.join(', ') });
   if (product.sideCabinet) rows.push({ label: 'Side cabinet', value: product.sideCabinet });
   rows.push({ label: 'Build', value: 'Modular — quick coupling & install' });
-  rows.push({ label: 'Installation time', value: 'Minutes, by our team' });
-  rows.push({ label: 'Recommended for', value: 'CEOs, directors, boardrooms' });
+  rows.push({ label: 'Installation', value: '5 to 10 minutes' });
+  rows.push({ label: 'Recommended for', value: 'CEOs, Executives, Managers, Business owners, hotels managers, VIPs and celebrities' });
 
   specSheet.innerHTML = rows.map(row => `
     <div class="spec-row">
@@ -955,17 +1012,18 @@ function updateForCode(code){
   stickyPrice.innerHTML = priceStr + '<small>Executive Office Table</small>';
   galleryPrice.textContent = priceStr;
 
-  // Update names – we show the full name in the summary and the finish name separately
   selectedFinishName.textContent = color;
   sumProduct.textContent = fullName + ' (' + color + ')';
 
-  finishSelect.value = code;
+  // Note: finish dropdown removed, but we keep code for sync
   renderSpecs(product);
   updateCalc();
 }
 
 function getCurrentCode(){
-  return finishSelect.value;
+  // We no longer have a finish dropdown, but we can track via active swatch
+  const active = document.querySelector('.swatch.active');
+  return active ? active.dataset.code : 'DT-001';
 }
 
 function getCurrentProduct(){
@@ -992,15 +1050,6 @@ swatches.forEach(sw => {
     sw.classList.add('active');
     updateForCode(sw.dataset.code);
   });
-});
-
-/* ---- Dropdown change ---- */
-finishSelect.addEventListener('change', () => {
-  const code = finishSelect.value;
-  swatches.forEach(sw => {
-    sw.classList.toggle('active', sw.dataset.code === code);
-  });
-  updateForCode(code);
 });
 
 /* ---- Quantity controls ---- */
@@ -1048,6 +1097,10 @@ document.getElementById('orderForm').addEventListener('submit', function(e){
     return;
   }
 
+  // Get selected zone
+  const zoneRadio = document.querySelector('input[name="deliveryZone"]:checked');
+  const zone = zoneRadio ? zoneRadio.value : 'Not selected';
+
   const code = getCurrentCode();
   const product = PRODUCTS[code];
   if(!product) return;
@@ -1060,7 +1113,6 @@ document.getElementById('orderForm').addEventListener('submit', function(e){
     method: 'POST',
     body: formData
   }).then(response => {
-    // Netlify will handle email notification if configured
     console.log('Netlify form submitted');
   }).catch(err => console.log('Netlify submit error', err));
 
@@ -1071,6 +1123,7 @@ document.getElementById('orderForm').addEventListener('submit', function(e){
     'Phone: ' + phone,
     f.altPhone.value.trim() ? 'Alt. phone: ' + f.altPhone.value.trim() : null,
     'Delivery address: ' + address,
+    'Delivery zone: ' + zone,
     'Finish: ' + product.color,
     'Product: ' + product.fullName,
     'Quantity: ' + qty,
