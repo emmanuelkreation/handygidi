@@ -104,7 +104,7 @@
     max-width:var(--max); margin:0 auto;
   }
   .brand{display:flex; align-items:center; gap:10px; text-decoration:none;}
-  .brand img{height:44px; width:auto;}
+  .brand img{height:60px; width:auto;}
   nav{display:flex; align-items:center; gap:30px;}
   nav a{
     font-size:14.5px; font-weight:500; text-decoration:none; color:var(--ink-soft);
@@ -331,6 +331,23 @@
   .policy-list li{padding:12px 0; border-top:1px solid var(--line-soft); font-size:14.5px; color:var(--ink-soft);}
   .policy-list li b{color:var(--ink); font-weight:600;}
 
+  /* Extra info note box */
+  .info-note{
+    background:var(--paper-3);
+    border:1px solid var(--line);
+    padding:20px 24px;
+    margin-top:24px;
+    border-radius:3px;
+  }
+  .info-note p{
+    margin:4px 0;
+    font-size:14px;
+    color:var(--ink-soft);
+  }
+  .info-note p strong{
+    color:var(--ink);
+  }
+
   .faq-item{border-bottom:1px solid var(--line);}
   .faq-q{
     width:100%; text-align:left; background:none; border:none; cursor:pointer;
@@ -362,8 +379,6 @@
     outline:2px solid var(--gold-deep); outline-offset:1px; border-color:var(--gold-deep);
   }
   .form-two{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
-
-  /* New style for radio chip group */
   .zone-radio-group{
     display:flex;
     flex-wrap:wrap;
@@ -410,7 +425,7 @@
   .footer-grid h4{color:var(--paper-3); font-size:14px; margin-bottom:16px; font-family:'Public Sans', sans-serif; font-weight:600; text-transform:uppercase; letter-spacing:0.06em;}
   .footer-grid p, .footer-grid a{font-size:14px; color:rgba(245,239,226,0.75); text-decoration:none; display:block; margin-bottom:9px;}
   .footer-grid a:hover{color:var(--gold-light);}
-  .footer-brand img{height:40px; filter:brightness(0) invert(1); opacity:0.92; margin-bottom:14px;}
+  .footer-brand img{height:56px; filter:brightness(0) invert(1); opacity:0.92; margin-bottom:14px;}
   .footer-brand p{max-width:32ch; color:rgba(245,239,226,0.6);}
   .footer-bottom{display:flex; justify-content:space-between; padding-top:22px; font-size:12.5px; color:rgba(245,239,226,0.5); flex-wrap:wrap; gap:10px;}
 
@@ -550,8 +565,8 @@
             <div class="swatch active" data-code="DT-001" data-img="assests/DT-001.png" data-name="Wood-grain &amp; Dark Grey">
               <img src="assests/DT-001.png" alt="Wood-grain & Dark Grey" loading="lazy"><span>Wood-grain &amp; Dark Grey</span>
             </div>
-            <div class="swatch" data-code="DT-002" data-img="assests/DT-002.png" data-name="Wenge Brown &amp; Dark Grey">
-              <img src="assests/DT-002.png" alt="Wenge Brown & Dark Grey" loading="lazy"><span>Wenge Brown &amp; Dark Grey</span>
+            <div class="swatch" data-code="DT-002" data-img="assests/DT-002.png" data-name="Wenge Brown">
+              <img src="assests/DT-002.png" alt="Wenge Brown" loading="lazy"><span>Wenge Brown</span>
             </div>
             <div class="swatch" data-code="DT-003" data-img="assests/DT-003.png" data-name="Offwhite &amp; Dark Grey">
               <img src="assests/DT-003.png" alt="Offwhite & Dark Grey" loading="lazy"><span>Offwhite &amp; Dark Grey</span>
@@ -696,6 +711,13 @@
             <li><b>Wrong item:</b> may be returned for the correct one.</li>
             <li><b>Damage:</b> items not physically damaged on arrival will be replaced.</li>
           </ul>
+          <!-- New info note -->
+          <div class="info-note">
+            <p><strong>📦 Installation &amp; Support</strong></p>
+            <p>• There is no Installation outside Abuja, FCT.</p>
+            <p>• Installation Manual and accessories are included in delivery.</p>
+            <p>• Office Executive tables are DIY (Do it Yourself) – visit our YouTube tutorials or any of our social media handles for guidance.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -872,7 +894,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span id="yr"></span> MODULAR by Handy-Gidi. All rights reserved.</span>
+      <span>© <span id="yr"></span> MODULAR by Handy-Gidi. All rights reserved. Terms &amp; Conditions apply.</span>
       <span>Built by Kreation Digitals</span>
     </div>
   </div>
@@ -914,10 +936,10 @@ const PRODUCTS = {
   },
   'DT-002': {
     fullName: 'Executive Office table Code: DT-002',
-    color: 'Wenge Brown & Dark Grey',
+    color: 'Wenge Brown',
     price: 550000,
     img: 'assests/DT-002.png',
-    dimensions: '1800 × 750 × 800 mm',
+    dimensions: '1500 × 750 × 800 mm',
     extension: null,
     features: ['Drawers', 'Smart sockets and USB ducts'],
     sideCabinet: null
@@ -1015,13 +1037,11 @@ function updateForCode(code){
   selectedFinishName.textContent = color;
   sumProduct.textContent = fullName + ' (' + color + ')';
 
-  // Note: finish dropdown removed, but we keep code for sync
   renderSpecs(product);
   updateCalc();
 }
 
 function getCurrentCode(){
-  // We no longer have a finish dropdown, but we can track via active swatch
   const active = document.querySelector('.swatch.active');
   return active ? active.dataset.code : 'DT-001';
 }
@@ -1097,7 +1117,6 @@ document.getElementById('orderForm').addEventListener('submit', function(e){
     return;
   }
 
-  // Get selected zone
   const zoneRadio = document.querySelector('input[name="deliveryZone"]:checked');
   const zone = zoneRadio ? zoneRadio.value : 'Not selected';
 
@@ -1135,7 +1154,6 @@ document.getElementById('orderForm').addEventListener('submit', function(e){
   const message = encodeURIComponent(lines.join('\n'));
   window.open('https://wa.me/2347051094001?text=' + message, '_blank');
 
-  // Show confirmation panel
   f.style.display = 'none';
   document.getElementById('confirmPanel').style.display = 'block';
 });
