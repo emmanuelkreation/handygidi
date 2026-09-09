@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MODULAR Executive Office Table — Handy-Gidi | Pay on Delivery, Abuja</title>
-<meta name="description" content="MODULAR Executive Office Table by Handy-Gidi. Premium executive design, free same-day delivery and installation within Abuja Metropolis. Payment on delivery." />
+<meta name="description" content="MODULAR Executive Office Table by Handy-Gidi. Premium executive design, free same-day delivery and installation within Abuja Metropolis. Payment on delivery.">
 
 <!-- TRACKING placeholder – add Pixel/GA when available -->
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,460;0,9..144,560;0,9..144,650;1,9..144,460&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,460;0,9..144,560;0,9..144,650;1,9..144,460&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
   :root{
@@ -224,8 +224,23 @@
   .gallery-main{
     border:1px solid var(--line); background:var(--paper-3);
     padding:30px; display:flex; align-items:center; justify-content:center; min-height:380px;
+    position:relative;
   }
   .gallery-main img{max-height:400px; width:auto; margin:0 auto;}
+  .gallery-price-tag{
+    position:absolute;
+    bottom:20px;
+    right:20px;
+    background:var(--paper-3);
+    border:1px solid var(--line);
+    padding:10px 16px;
+    text-align:center;
+    box-shadow:0 8px 16px rgba(26,20,15,0.12);
+    font-size:13px;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .gallery-price-tag .price{font-family:'Fraunces', serif; font-size:20px; font-weight:650; display:block;}
   .swatch-row{display:flex; gap:12px; margin-top:16px; flex-wrap:wrap;}
   .swatch{
     flex:1; border:1px solid var(--line); background:var(--paper-3); cursor:pointer;
@@ -507,34 +522,32 @@
         <div>
           <div class="gallery-main">
             <img id="mainProductImg" src="assests/DT-001.png" alt="MODULAR Executive Office Table">
+            <div class="gallery-price-tag">
+              <span class="price" id="galleryPriceTag">₦750,000</span>
+              <span style="font-size:11px; font-weight:400; color:var(--ink-soft);">per unit</span>
+            </div>
           </div>
           <div class="swatch-row">
-            <div class="swatch active" data-img="assests/DT-001.png" data-name="Wood-grain &amp; Dark Grey" data-price="750000">
+            <div class="swatch active" data-code="DT-001" data-img="assests/DT-001.png" data-name="Wood-grain &amp; Dark Grey">
               <img src="assests/DT-001.png" alt="Wood-grain & Dark Grey" loading="lazy"><span>Wood-grain &amp; Dark Grey</span>
             </div>
-            <div class="swatch" data-img="assests/DT-002.png" data-name="Wenge Brown &amp; Dark Grey" data-price="550000">
+            <div class="swatch" data-code="DT-002" data-img="assests/DT-002.png" data-name="Wenge Brown &amp; Dark Grey">
               <img src="assests/DT-002.png" alt="Wenge Brown & Dark Grey" loading="lazy"><span>Wenge Brown &amp; Dark Grey</span>
             </div>
-            <div class="swatch" data-img="assests/DT-003.png" data-name="Offwhite &amp; Dark Grey" data-price="750000">
+            <div class="swatch" data-code="DT-003" data-img="assests/DT-003.png" data-name="Offwhite &amp; Dark Grey">
               <img src="assests/DT-003.png" alt="Offwhite & Dark Grey" loading="lazy"><span>Offwhite &amp; Dark Grey</span>
             </div>
-            <div class="swatch" data-img="assests/DT-004.png" data-name="Wenge &amp; Dark Grey" data-price="750000">
+            <div class="swatch" data-code="DT-004" data-img="assests/DT-004.png" data-name="Wenge &amp; Dark Grey">
               <img src="assests/DT-004.png" alt="Wenge & Dark Grey" loading="lazy"><span>Wenge &amp; Dark Grey</span>
             </div>
           </div>
-          <p class="gallery-note">Finish names correspond to client product codes: DT‑001, DT‑002, DT‑003, DT‑004.</p>
+          <p class="gallery-note">Product codes: DT‑001, DT‑002, DT‑003, DT‑004.</p>
         </div>
 
         <div>
           <h3 style="font-size:19px; margin-bottom:6px;">Specification</h3>
-          <dl class="spec-sheet">
-            <div class="spec-row"><dt>Overall dimensions</dt><dd>1800 × 750 × 800 mm</dd></div>
-            <div class="spec-row"><dt>Extension</dt><dd>1300 × 750 × 500 mm</dd></div>
-            <div class="spec-row"><dt>Build</dt><dd>Modular — quick coupling &amp; install</dd></div>
-            <div class="spec-row"><dt>Features</dt><dd>Drawers, Smart sockets, USB ducts</dd></div>
-            <div class="spec-row"><dt>Side cabinet</dt><dd>With duct cover</dd></div>
-            <div class="spec-row"><dt>Installation time</dt><dd>Minutes, by our team</dd></div>
-            <div class="spec-row"><dt>Recommended for</dt><dd>CEOs, directors, boardrooms</dd></div>
+          <dl class="spec-sheet" id="specSheet">
+            <!-- Dynamic rows will be inserted here by JavaScript -->
           </dl>
         </div>
       </div>
@@ -681,7 +694,7 @@
         <h2>Frequently asked questions</h2>
       </div>
       <div id="faqList">
-        <!-- Static FAQ items (unchanged) -->
+        <!-- Static FAQ items -->
         <div class="faq-item">
           <button class="faq-q"><span>Is the table made from scratch after I order?</span><span class="plus">+</span></button>
           <div class="faq-a"><p>No. The table is already fully manufactured and only requires coupling and installation.</p></div>
@@ -770,10 +783,10 @@
               <div class="form-row">
                 <label for="finish">Finish</label>
                 <select id="finish" name="finish">
-                  <option value="Wood-grain &amp; Dark Grey" data-price="750000">Wood-grain &amp; Dark Grey</option>
-                  <option value="Wenge Brown &amp; Dark Grey" data-price="550000">Wenge Brown &amp; Dark Grey</option>
-                  <option value="Offwhite &amp; Dark Grey" data-price="750000">Offwhite &amp; Dark Grey</option>
-                  <option value="Wenge &amp; Dark Grey" data-price="750000">Wenge &amp; Dark Grey</option>
+                  <option value="DT-001">Wood-grain &amp; Dark Grey</option>
+                  <option value="DT-002">Wenge Brown &amp; Dark Grey</option>
+                  <option value="DT-003">Offwhite &amp; Dark Grey</option>
+                  <option value="DT-004">Wenge &amp; Dark Grey</option>
                 </select>
               </div>
               <div class="form-row">
@@ -862,113 +875,179 @@ mobileNav.querySelectorAll('a').forEach(link => {
 
 /* ---- Product data ---- */
 const PRODUCTS = {
-  'Wood-grain &amp; Dark Grey': { price: 750000, img: 'assests/DT-001.png' },
-  'Wenge Brown &amp; Dark Grey': { price: 550000, img: 'assests/DT-002.png' },
-  'Offwhite &amp; Dark Grey': { price: 750000, img: 'assests/DT-003.png' },
-  'Wenge &amp; Dark Grey': { price: 750000, img: 'assests/DT-004.png' }
+  'DT-001': {
+    name: 'Wood-grain & Dark Grey',
+    price: 750000,
+    img: 'assests/DT-001.png',
+    dimensions: '1800 × 750 × 800 mm',
+    extension: '1300 × 750 × 500 mm',
+    features: ['Drawers', 'Smart sockets and USB ducts'],
+    sideCabinet: 'Side cabinets duct cover'
+  },
+  'DT-002': {
+    name: 'Wenge Brown & Dark Grey',
+    price: 550000,
+    img: 'assests/DT-002.png',
+    dimensions: '1800 × 750 × 800 mm',
+    extension: null,
+    features: ['Drawers', 'Smart sockets and USB ducts'],
+    sideCabinet: null
+  },
+  'DT-003': {
+    name: 'Offwhite & Dark Grey',
+    price: 750000,
+    img: 'assests/DT-003.png',
+    dimensions: '1800 × 750 × 800 mm',
+    extension: '1300 × 750 × 500 mm',
+    features: ['Drawers', 'Smart sockets and USB ducts'],
+    sideCabinet: 'Side cabinets duct cover'
+  },
+  'DT-004': {
+    name: 'Wenge & Dark Grey',
+    price: 750000,
+    img: 'assests/DT-004.png',
+    dimensions: '1800 × 750 × 800 mm',
+    extension: '1300 × 750 × 500 mm',
+    features: ['Drawers', 'Smart sockets and USB ducts'],
+    sideCabinet: 'Side cabinets duct cover'
+  }
 };
-
-/* ---- Finish swatches ---- */
-const swatches = document.querySelectorAll('.swatch');
-const mainImg = document.getElementById('mainProductImg');
-const heroImg = document.getElementById('heroProductImg');
-const finishSelect = document.getElementById('finish');
 
 function formatNaira(n){
   return '₦' + n.toLocaleString('en-NG');
 }
 
-function updateForFinish(name){
-  const data = PRODUCTS[name];
-  if(!data) return;
-  const price = data.price;
-  const img = data.img;
-  // Update main gallery image
+/* ---- UI elements ---- */
+const swatches = document.querySelectorAll('.swatch');
+const mainImg = document.getElementById('mainProductImg');
+const heroImg = document.getElementById('heroProductImg');
+const finishSelect = document.getElementById('finish');
+
+const unitPriceDisplay = document.getElementById('unitPriceDisplay');
+const heroPrice = document.getElementById('heroPrice');
+const heroTagPrice = document.getElementById('heroTagPrice');
+const selectedFinishName = document.getElementById('selectedFinishName');
+const sumProduct = document.getElementById('sumProduct');
+const stickyPrice = document.getElementById('stickyPrice');
+const calcTotal = document.getElementById('calcTotal');
+const sumTotal = document.getElementById('sumTotal');
+const sumQty = document.getElementById('sumQty');
+const calcQty = document.getElementById('calcQty');
+const qtyField = document.getElementById('qty');
+const galleryPrice = document.getElementById('galleryPriceTag');
+const specSheet = document.getElementById('specSheet');
+
+function renderSpecs(product){
+  const rows = [];
+  rows.push({ label: 'Overall dimensions', value: product.dimensions });
+  if (product.extension) rows.push({ label: 'Extension', value: product.extension });
+  if (product.features && product.features.length) rows.push({ label: 'Features', value: product.features.join(', ') });
+  if (product.sideCabinet) rows.push({ label: 'Side cabinet', value: product.sideCabinet });
+  rows.push({ label: 'Build', value: 'Modular — quick coupling & install' });
+  rows.push({ label: 'Installation time', value: 'Minutes, by our team' });
+  rows.push({ label: 'Recommended for', value: 'CEOs, directors, boardrooms' });
+
+  specSheet.innerHTML = rows.map(row => `
+    <div class="spec-row">
+      <dt>${row.label}</dt>
+      <dd>${row.value}</dd>
+    </div>
+  `).join('');
+}
+
+function updateForCode(code){
+  const product = PRODUCTS[code];
+  if(!product) return;
+  const { name, price, img } = product;
+
+  // Update images
   mainImg.src = img;
   heroImg.src = img;
+
   // Update price displays
-  document.getElementById('unitPriceDisplay').textContent = formatNaira(price);
-  document.getElementById('heroPrice').textContent = formatNaira(price);
-  document.getElementById('heroTagPrice').textContent = formatNaira(price);
-  document.getElementById('selectedFinishName').textContent = name;
-  document.getElementById('sumProduct').textContent = name;
-  // Update sticky price
-  document.querySelector('.sc-price').innerHTML = formatNaira(price) + '<small>Executive Office Table</small>';
+  const priceStr = formatNaira(price);
+  unitPriceDisplay.textContent = priceStr;
+  heroPrice.textContent = priceStr;
+  heroTagPrice.textContent = priceStr;
+  stickyPrice.innerHTML = priceStr + '<small>Executive Office Table</small>';
+  galleryPrice.textContent = priceStr;
+
+  // Update names
+  selectedFinishName.textContent = name;
+  sumProduct.textContent = name;
+
   // Update dropdown
-  finishSelect.value = name;
-  // Recalculate total
+  finishSelect.value = code;
+
+  // Update spec sheet
+  renderSpecs(product);
+
+  // Update quantity total
   updateCalc();
 }
 
+function getCurrentCode(){
+  return finishSelect.value;
+}
+
+function getCurrentProduct(){
+  return PRODUCTS[getCurrentCode()];
+}
+
+function updateCalc(){
+  const product = getCurrentProduct();
+  if(!product) return;
+  let qty = Math.max(1, parseInt(calcQty.value) || 1);
+  calcQty.value = qty;
+  qtyField.value = qty;
+  const total = product.price * qty;
+  const totalStr = formatNaira(total);
+  calcTotal.textContent = totalStr;
+  sumTotal.textContent = totalStr;
+  sumQty.textContent = qty;
+}
+
+/* ---- Swatch click ---- */
 swatches.forEach(sw => {
   sw.addEventListener('click', () => {
     swatches.forEach(s => s.classList.remove('active'));
     sw.classList.add('active');
-    const name = sw.dataset.name;
-    updateForFinish(name);
+    const code = sw.dataset.code;
+    updateForCode(code);
   });
 });
 
+/* ---- Dropdown change ---- */
 finishSelect.addEventListener('change', () => {
-  const name = finishSelect.value;
-  // Find matching swatch and activate it
+  const code = finishSelect.value;
   swatches.forEach(sw => {
-    sw.classList.toggle('active', sw.dataset.name === name);
+    sw.classList.toggle('active', sw.dataset.code === code);
   });
-  updateForFinish(name);
+  updateForCode(code);
 });
 
-/* ---- Pricing & quantity ---- */
-function getUnitPrice(){
-  const name = finishSelect.value;
-  return PRODUCTS[name] ? PRODUCTS[name].price : 750000;
-}
-
-const calcQty = document.getElementById('calcQty');
-const calcTotal = document.getElementById('calcTotal');
-const qtyField = document.getElementById('qty');
-
-function updateCalc(){
-  let qty = Math.max(1, parseInt(calcQty.value) || 1);
-  calcQty.value = qty;
-  const unit = getUnitPrice();
-  const total = unit * qty;
-  calcTotal.textContent = formatNaira(total);
-  qtyField.value = qty;
-  document.getElementById('sumQty').textContent = qty;
-  document.getElementById('sumTotal').textContent = formatNaira(total);
-}
-
-document.getElementById('qtyMinus').addEventListener('click', ()=>{
+/* ---- Quantity controls ---- */
+document.getElementById('qtyMinus').addEventListener('click', () => {
   calcQty.value = Math.max(1, (parseInt(calcQty.value)||1) - 1);
   updateCalc();
 });
-document.getElementById('qtyPlus').addEventListener('click', ()=>{
+document.getElementById('qtyPlus').addEventListener('click', () => {
   calcQty.value = (parseInt(calcQty.value)||1) + 1;
   updateCalc();
 });
 calcQty.addEventListener('input', updateCalc);
-qtyField.addEventListener('input', ()=>{
+qtyField.addEventListener('input', () => {
   calcQty.value = Math.max(1, parseInt(qtyField.value)||1);
   updateCalc();
 });
 
-// Initialize with first swatch (active)
-const activeSwatch = document.querySelector('.swatch.active');
-if(activeSwatch) {
-  updateForFinish(activeSwatch.dataset.name);
-} else {
-  // fallback
-  updateForFinish('Wood-grain &amp; Dark Grey');
-}
-
 /* ---- FAQ accordion ---- */
-document.querySelectorAll('.faq-item').forEach(item=>{
+document.querySelectorAll('.faq-item').forEach(item => {
   const q = item.querySelector('.faq-q');
   const a = item.querySelector('.faq-a');
-  q.addEventListener('click', ()=>{
+  q.addEventListener('click', () => {
     const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(other=>{
+    document.querySelectorAll('.faq-item.open').forEach(other => {
       other.classList.remove('open');
       other.querySelector('.faq-a').style.maxHeight = null;
     });
@@ -979,7 +1058,7 @@ document.querySelectorAll('.faq-item').forEach(item=>{
   });
 });
 
-/* ---- Order form -> WhatsApp ---- */
+/* ---- Order form submission ---- */
 document.getElementById('orderForm').addEventListener('submit', function(e){
   e.preventDefault();
   const f = e.target;
@@ -990,16 +1069,18 @@ document.getElementById('orderForm').addEventListener('submit', function(e){
     alert('Please fill in your name, phone number and delivery address.');
     return;
   }
+  const code = getCurrentCode();
+  const product = PRODUCTS[code];
+  if(!product) return;
   const qty = Math.max(1, parseInt(f.qty.value)||1);
-  const unit = getUnitPrice();
-  const total = unit * qty;
+  const total = product.price * qty;
   const lines = [
     'New order — MODULAR Executive Office Table',
     'Name: ' + name,
     'Phone: ' + phone,
     f.altPhone.value.trim() ? 'Alt. phone: ' + f.altPhone.value.trim() : null,
     'Delivery address: ' + address,
-    'Finish: ' + f.finish.value,
+    'Finish: ' + product.name,
     'Quantity: ' + qty,
     'Estimated total: ' + formatNaira(total),
     f.deliveryTime.value.trim() ? 'Preferred delivery time: ' + f.deliveryTime.value.trim() : null,
@@ -1012,7 +1093,14 @@ document.getElementById('orderForm').addEventListener('submit', function(e){
   f.style.display = 'none';
   document.getElementById('confirmPanel').style.display = 'block';
 });
-</script>
 
+/* ---- Initialise ---- */
+const activeSwatch = document.querySelector('.swatch.active');
+if(activeSwatch) {
+  updateForCode(activeSwatch.dataset.code);
+} else {
+  updateForCode('DT-001');
+}
+</script>
 </body>
 </html>
